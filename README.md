@@ -32,3 +32,9 @@ Further there are many possibilities for improvement including making the UI par
 
 ### Code
 Due to the implementation of the algorithm consistently evolving into its current state, breaking it up into multiple PRs would not have made much sense. All my changes are therefore included in one final [PR](https://github.com/appleseedhq/appleseed/pull/2656) which is currently awaiting review. To try the new feature out feel free to clone my fork of the Appleseed repository. The changes related to the project are in the [path_guiding branch](https://github.com/BashPrince/appleseed/tree/path_guiding) instructions to get the Appleseed codebase up and running can be found in the [Appleseed Wiki](https://github.com/appleseedhq/appleseed/wiki/Building-appleseed). Instructions for the path guiding UI settings are also included in the PR. Once my changes get merged they should be available in the following release of Appleseed which can then be [downloaded](https://appleseedhq.net/download.html) and installed more easily.
+
+### Conclusion
+I enjoyed working on GSoC a lot and would recommend the experience to anyone studying computer science or a related field. I will definitely continue being a part of the
+appleseed community, improving my project and helping to make Appleseed an even greater Open Source project. Many thanks to François Beaune and Esteban Tovagliari my
+mentors and also to Thomas Müller for assisting me throughout the project. Many thanks also to Sebastian Herholz who supplied me with additional ideas for further
+improvements that I will hopefully be able to include in the near future.
