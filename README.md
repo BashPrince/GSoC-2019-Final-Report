@@ -42,20 +42,20 @@ The new algorithm shows clear improvements in scenes dominated by indirect light
 ![](images/ajar_pg.png)
 
 
-*Light in this scene enters through the door and lights the scene indirectly.*
+*Light in this scene enters through the door and lights the scene indirectly. (Rendered in 11 min 45 sec)*
 
 ![](images/bidir_pt.png)
 ![](images/bidir_pg.png)
 
 
-*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.*
+*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.  (Rendered in 11 min 35 sec)*
 
 ![](images/classroom_pt.png)
 ![](images/classroom_pg.png)
 
 
 *The classroom scene shows mixed results for path guiding. The reflections from the highly reflective tables onto the ceiling show less noise for path guiding.
-Other areas show no improvement or even slightly worse performance.*
+Other areas show no improvement or even slightly worse performance.  (Rendered in 14 min 00 sec)*
 
 ### Code
 Due to the implementation of the algorithm consistently evolving into its current state, breaking it up into multiple PRs would not have made much sense. All my changes are therefore included in one final [PR](https://github.com/appleseedhq/appleseed/pull/2656) which is currently awaiting review. To try the new feature out feel free to clone my fork of the Appleseed repository. The changes related to the project are in the [path_guiding branch](https://github.com/BashPrince/appleseed/tree/path_guiding) instructions to get the Appleseed codebase up and running can be found in the [Appleseed Wiki](https://github.com/appleseedhq/appleseed/wiki/Building-appleseed). Instructions for the path guiding UI settings are also included in the PR. Once my changes get merged they should be available in the following release of Appleseed which can then be [downloaded](https://appleseedhq.net/download.html) and installed more easily.
