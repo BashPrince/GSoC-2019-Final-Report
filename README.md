@@ -36,7 +36,7 @@ in this area produces many interesting variations ([this document](https://jo.dr
 
 ### Results
 The new algorithm shows clear improvements in scenes dominated by indirect lighting. These images show equal rendering time comparisons between standard path tracing
-(top image) and path guiding (bottom image). The image noise results from the sampling process not having converged to an acceptably close enough estimate of the final pixel color. Novel rendering algorithms, like PPG, aim to reduce the noise by constructing paths more intelligently.
+(top image) and path guiding (bottom image). The image noise results from the sampling process not having converged to an acceptably close enough estimate of the final pixel color. Novel rendering algorithms, like PPG, aim to reduce the noise by constructing paths more intelligently. All scenes shown have been retrieved from Benedikt Bitterli's [rendering resources](https://benedikt-bitterli.me/resources/).
 ![](images/ajar_pt.png)
 ![](images/ajar_pg.png)
 
