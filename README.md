@@ -1,9 +1,8 @@
-# Practical Path Guiding
-## Google Summer of Code 2019 - Final Project Report
-This year I was very happy to qualify for the [Google Summer of Code](https://summerofcode.withgoogle.com/) project with [Appleseed](https://appleseedhq.net/) as my host organiser. During the summer I implemented [Practical Path Guiding](https://github.com/Tom94/practical-path-guiding) a new rendering algorithm for their Open Source 3D film production renderer. My assigned mentors were François Beaune and Esteban Tovagliari.
+# Google Summer of Code 2019 - Final Project Report
+This year I was very happy to [qualify](https://summerofcode.withgoogle.com/projects/#5218774590947328 "Link to my project proposal") for the [Google Summer of Code](https://summerofcode.withgoogle.com/) project with [Appleseed](https://appleseedhq.net/) as my host organiser. During the summer I implemented [Practical Path Guiding](https://github.com/Tom94/practical-path-guiding) a new rendering algorithm for their Open Source 3D film production renderer. My assigned mentors were François Beaune and Esteban Tovagliari.
 
-### Rendering
-Nowadays most renderers used in film productions use a technique called path tracing to calculate the realistic distribution of light in a virtual 3D scene. In simple terms a [path tracer](https://www.youtube.com/watch?v=frLwRLS_ZR0 "A short explanation video by Disney") probes the scene by extending rays from a virtual camera, reflecting rays in random directions at surface intersections until they hit a light source, at which point the transmission of energy from the light along the path back to the camera is calculated. Usually many such path probes (called samples in graphics lingo) are calculated and averaged to determine the final pixel color, an extremely time consuming process even for modern computers.
+### Rendering 101
+ Most film production renderers today use a technique called path tracing to calculate the realistic distribution of light in a virtual 3D scene. In simple terms a [path tracer](https://www.youtube.com/watch?v=frLwRLS_ZR0 "A short explanation video by Disney") probes the scene by extending rays from a virtual camera, reflecting rays in random directions at surface intersections until they hit a light source, at which point the transmission of energy from the light along the path back to the camera is calculated. Usually many such path probes (called samples in graphics lingo) are calculated and averaged to determine the final pixel color, an extremely time consuming process even for modern computers.
 
 Much of the realism in modern computer graphics comes from being able to not only account for illumination from direct light sources but also for indirect light, for example light that scattered from a blue wall, illuminating nearby objects with a soft blue glow. Because nothing about the distribution of indirect light in a scene is known up front it is notoriously hard to find significant indirect light contributions only by randomly scattering rays at surface intersections, requiring many samples over many paths to determine the final pixel color.
 
@@ -48,7 +47,7 @@ The new algorithm shows clear improvements in scenes dominated by indirect light
 ![](images/bidir_pg.png)
 
 
-*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.  (Rendered in 11 min 35 sec)*
+*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing. The little specs (fireflies) result from low probability paths hitting the light sources and are present in both algorithms. (Rendered in 11 min 35 sec)*
 
 ![](images/classroom_pt.png)
 ![](images/classroom_pg.png)
