@@ -7,7 +7,7 @@ This year I was very happy to [qualify](https://summerofcode.withgoogle.com/proj
 Much of the realism in modern computer graphics comes from being able to not only account for illumination from direct light sources but also for indirect light, for example light that scattered from a blue wall, illuminating nearby objects with a soft blue glow. Because nothing about the distribution of indirect light in a scene is known up front it is notoriously hard to find significant indirect light contributions only by randomly scattering rays at surface intersections, requiring many samples over many paths to determine the final pixel color.
 
 ### Practical Path Guiding
-[Practical Path Guiding](https://github.com/Tom94/practical-path-guiding) [Müller et. al. 2017] is a novel rendering technique that can extend a regular path tracer to improve its performance with indirect light. It bulids a 5D data structure, named SD-Tree, which, as the scene is being rendered, progressively subdivides the three spatial dimensions and records 2D directional information of the incoming light at each scattering location along a path. Over many samples an increasingly more accurate approximation of the entire scene's light distribution is contained in the SD-Tree. The information about where significant indirect light is coming from at any point in the scene can be used to intelligently guide path extensions towards brighter areas rather than only relying on randomly chosen directions.
+[Practical Path Guiding](https://github.com/Tom94/practical-path-guiding) (PPG) [Müller et. al. 2017] is a novel rendering technique that can extend a regular path tracer to improve its performance with indirect light. It bulids a 5D data structure, named SD-Tree, which, as the scene is being rendered, progressively subdivides the three spatial dimensions and records 2D directional information of the incoming light at each scattering location along a path. Over many samples an increasingly more accurate approximation of the entire scene's light distribution is contained in the SD-Tree. The information about where significant indirect light is coming from at any point in the scene can be used to intelligently guide path extensions towards brighter areas rather than only relying on randomly chosen directions.
 
 ### Implementing the Project
 The authors [implemented](https://github.com/Tom94/practical-path-guiding) their algorithm in [Mitsuba](https://www.mitsuba-renderer.org/) another Open Source renderer which served as a valuable reference throughout the project.
@@ -36,7 +36,7 @@ in this area produces many interesting variations ([this document](https://jo.dr
 
 ### Results
 The new algorithm shows clear improvements in scenes dominated by indirect lighting. These images show equal rendering time comparisons between standard path tracing
-(top image) and path guiding (bottom image).
+(top image) and path guiding (bottom image). The image noise results from the sampling process not having converged to an acceptably close enough estimate of the final pixel color. Novel rendering algorithms, like PPG, aim to reduce the noise by constructing paths more intelligently.
 ![](images/ajar_pt.png)
 ![](images/ajar_pg.png)
 
