@@ -19,16 +19,35 @@ To verify if my extensions to the path tracer were correct I ported and slightly
 
 Shortly after I started work on re-implementing the SD-Tree one of the authors of the Practical Path Guiding algorithm, Thomas Müller, joined the discussion on [Appleseed's Discord server](https://discord.gg/Vcu5A7h) to assist me with helpful advice in my implementation. Thomas let me know that since the release of the original path guiding paper the algorithm had been extended with several improvements (see chapter 10 in [this document](https://jo.dreggn.org/path-tracing-in-production/2019/guiding.pdf)). With my mentor's and Thomas' help as well as his original implementation to fall back to for clarity I could finish the implementation.
 
-### Wrapping Up with Difficulties
-Because I finished the implementation rather late into the project I found myself in a race against time to properly evaluate, test and debug the project. Unfortunately what I had thought to be a straightforward integration of the algorithm within our original path tracer, proved to be a bit more complicated to get exactly right and I found myself spending much of the final week tracing down a series of bugs. At the current stage the algorithm does improve lighting in some of the scenes I tested it on. Due to the computational overhead path guiding is expected to perform worse in scenes with straightforward lighting situations, this is also the case in the author's original implementation. In one particular scene however I am not seeing any improvements, even though the author's version does show a clear improvement. This is something I will have to investigate and can hopefully solve soon.
+### Wrapping Up With Some Difficulties
+Because I finished the implementation rather late into the project I found myself in a race against time to properly evaluate, test and debug the project. Unfortunately what I had thought to be a straightforward integration of the algorithm within our original path tracer, proved to be a bit more complicated to get exactly right and I found myself spending much of the final week tracing down a series of bugs. At the current stage the algorithm does improve lighting in some of the scenes I tested it on. Due to the computational overhead path guiding is expected to perform worse in scenes with straightforward lighting situations, this is also the case in the author's original implementation.
 
-Further there are many possibilities for improvement including making the UI parameters more user friendly, enabling checkpoint saving during rendering as is possible with standard path tracing and finding possibilities to reduce code duplication.
+Some things that I wanted to accomplish within the GSoC coding period were unfortunately not finished. In the near future I would like to work on these issues:
+*Enable rendering checkpoints. Our system allows saving backups during the render process to disk which can be used to resume a render later. Due to the algorithm
+relying on the SD-Tree, the datastructure would also need to be saved.
+*Rework the UI settings. The current controls are slightly confusing.
+*Investigate methods to reduce code duplication.
+*Rethink how the SD-Tree scattering events best fit into the pre-defined scattering modes appleseed uses to represent different surface scattering events (Diffuse/
+Glossy/Specular).
+*Create my own scenes to best highlight the strongpoints of the new algorithm.
+*Numerically evaluate the results with image error metrics.
 
-### Results (WIP)
-![](images/bidir-pt.png)
-![](images/bidir-pg.png)
-![](images/ajar-pt.png)
-![](images/ajar-pg.png)
+Path guiding has recently received a lot of attention with many major animation studios adopting the technique into their custom renderers. Ongoing active research
+in this area produces many interesting variations ([this document](https://jo.dreggn.org/path-tracing-in-production/2019/guiding.pdf "SIGGRAPH Path Guiding in Production - Course Notes") gives detailed overview). Some of these techniques can extend the current implementation for even better performance.
+
+### Results
+The new algorithm shows clear improvements in scenes dominated by indirect lighting. These images show equal rendering time comparisons between standard path tracing
+(top image) and path guiding (bottom image).
+![](images/ajar_pt.png)
+![](images/ajar_pg.png)
+*Light in this scene enters through the door and lights the scene indirectly.*
+![](images/bidir_pt.png)
+![](images/bidir_pg.png)
+*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.*
+![](images/classroom_pt.png)
+![](images/classroom_pg.png)
+*The classroom scene shows mixed results for path guiding. The reflections from the highly reflective tables onto the ceiling show less noise for path guiding.
+Other areas show no improvement or even slightly worse performance.*
 
 ### Code
 Due to the implementation of the algorithm consistently evolving into its current state, breaking it up into multiple PRs would not have made much sense. All my changes are therefore included in one final [PR](https://github.com/appleseedhq/appleseed/pull/2656) which is currently awaiting review. To try the new feature out feel free to clone my fork of the Appleseed repository. The changes related to the project are in the [path_guiding branch](https://github.com/BashPrince/appleseed/tree/path_guiding) instructions to get the Appleseed codebase up and running can be found in the [Appleseed Wiki](https://github.com/appleseedhq/appleseed/wiki/Building-appleseed). Instructions for the path guiding UI settings are also included in the PR. Once my changes get merged they should be available in the following release of Appleseed which can then be [downloaded](https://appleseedhq.net/download.html) and installed more easily.
@@ -36,5 +55,4 @@ Due to the implementation of the algorithm consistently evolving into its curren
 ### Conclusion
 I enjoyed working on GSoC a lot and would recommend the experience to anyone studying computer science or a related field. I will definitely continue being a part of the
 appleseed community, improving my project and helping to make Appleseed an even greater Open Source project. Many thanks to François Beaune and Esteban Tovagliari my
-mentors and also to Thomas Müller for assisting me throughout the project. Many thanks also to Sebastian Herholz who supplied me with additional ideas for further
-improvements that I will hopefully be able to include in the near future.
+mentors. A huge thank you to Thomas Müller, author of the path guiding algorithm, for assisting me throughout the project. Many thanks also to Sebastian Herholz who supplied me with additional ideas for further improvements that I will hopefully be able to include in the near future.
