@@ -36,7 +36,7 @@ in this area produces many interesting variations ([this document](https://jo.dr
 
 ### Results
 The new algorithm shows clear improvements in scenes dominated by indirect lighting. These images show equal rendering time comparisons between standard path tracing
-(top image) and path guiding (bottom image). The image noise results from the sampling process not having converged to an acceptably close enough estimate of the final pixel color. Novel rendering algorithms, like PPG, aim to reduce the noise by constructing paths more intelligently. All scenes shown have been retrieved from Benedikt Bitterli's [rendering resources](https://benedikt-bitterli.me/resources/).
+(top image) and path guiding (bottom image). The image noise results from the sampling process not having converged to an acceptably close enough estimate of the final pixel color. Novel rendering algorithms, like PPG, aim to reduce the noise by constructing paths more intelligently. All scenes shown have been retrieved from Benedikt Bitterli's [rendering resources](https://benedikt-bitterli.me/resources/) and ported to work with appleseed.
 ![](images/ajar_pt.png)
 ![](images/ajar_pg.png)
 
@@ -62,4 +62,4 @@ Due to the implementation of the algorithm consistently evolving into its curren
 ### Conclusion
 I enjoyed working on GSoC a lot and would recommend the experience to anyone studying computer science or a related field. I will definitely continue being a part of the
 appleseed community, improving my project and helping to make appleseed an even greater Open Source project. Many thanks to François Beaune and Esteban Tovagliari my
-mentors. A huge thank you to Thomas Müller, author of the path guiding algorithm, for assisting me throughout the project. Many thanks also to Sebastian Herholz who supplied me with additional ideas for further improvements that I will hopefully be able to include in the near future.
+mentors who have always been quick to assist me when I needed advice. A huge thank you to Thomas Müller, author of the path guiding algorithm, for assisting me throughout the project. Many thanks also to Sebastian Herholz who supplied me with additional ideas for further improvements that I will hopefully be able to include in the near future.
