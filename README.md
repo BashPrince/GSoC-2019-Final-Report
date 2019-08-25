@@ -40,13 +40,15 @@ The new algorithm shows clear improvements in scenes dominated by indirect light
 (top image) and path guiding (bottom image).
 ![](images/ajar_pt.png)
 ![](images/ajar_pg.png)
-*Light in this scene enters through the door and lights the scene indirectly.*
+  *Light in this scene enters through the door and lights the scene indirectly.*
+
 ![](images/bidir_pt.png)
 ![](images/bidir_pg.png)
-*The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.*
+  *The two light sources in this scene are not directly visible from most points in the scene which is why it is difficult to render with path tracing.*
+  
 ![](images/classroom_pt.png)
 ![](images/classroom_pg.png)
-*The classroom scene shows mixed results for path guiding. The reflections from the highly reflective tables onto the ceiling show less noise for path guiding.
+  *The classroom scene shows mixed results for path guiding. The reflections from the highly reflective tables onto the ceiling show less noise for path guiding.
 Other areas show no improvement or even slightly worse performance.*
 
 ### Code
