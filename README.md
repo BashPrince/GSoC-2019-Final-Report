@@ -1,4 +1,5 @@
 # Google Summer of Code 2019 - Final Project Report
+## Practical Path Guiding
 This year I was very happy to [qualify](https://summerofcode.withgoogle.com/projects/#5218774590947328 "Link to my project proposal") for the [Google Summer of Code](https://summerofcode.withgoogle.com/) project with [appleseed](https://appleseedhq.net/) as my host organiser. During the summer I implemented [Practical Path Guiding](https://github.com/Tom94/practical-path-guiding) a new rendering algorithm for their Open Source 3D film production renderer. My assigned mentors were François Beaune and Esteban Tovagliari. A pull request containing all relevant additions can be viewed [here](https://github.com/appleseedhq/appleseed/pull/2656).
 
 ### Rendering 101
@@ -57,6 +58,8 @@ The new algorithm shows clear improvements in scenes dominated by indirect light
 Other areas show no improvement or even slightly worse performance.  (Rendered in 14 min 00 sec)*
 
 ### Code
+[Get the code here.](https://github.com/appleseedhq/appleseed/pull/2656)
+
 Due to the implementation of the algorithm consistently evolving into its current state, breaking it up into multiple PRs would not have made much sense. All my changes are therefore included in one final [PR](https://github.com/appleseedhq/appleseed/pull/2656) which is currently awaiting review. To try the new feature out feel free to clone my fork of the appleseed repository. The changes related to the project are in the [path_guiding branch](https://github.com/BashPrince/appleseed/tree/path_guiding) instructions to get the appleseed codebase up and running can be found in the [appleseed Wiki](https://github.com/appleseedhq/appleseed/wiki/Building-appleseed). Instructions for the path guiding UI settings are also included in the PR. Once my changes get merged they should be available in the following release of appleseed which can then be [downloaded](https://appleseedhq.net/download.html) and installed more easily.
 
 ### Conclusion
